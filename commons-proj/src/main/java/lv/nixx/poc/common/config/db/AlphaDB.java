@@ -16,8 +16,11 @@ public @interface AlphaDB {
 
     boolean jpaSupport() default true;
 
+    String[] packageToScan() default {};
+
     String dataSource = prefix + "DataSource";
     String entityManagerFactory = prefix + "EntityManagerFactory";
     String transactionManager = prefix + "TransactionManager";
+
 
 }

@@ -15,6 +15,7 @@ public @interface BetaDB {
     String prefix = "beta";
 
     boolean jpaSupport() default true;
+    String[] packageToScan() default {};
 
     String dataSource = prefix + "DataSource";
     String entityManagerFactory = prefix + "EntityManagerFactory";

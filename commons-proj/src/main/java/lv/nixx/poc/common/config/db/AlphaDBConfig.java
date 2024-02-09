@@ -14,7 +14,7 @@ import javax.sql.DataSource;
 class AlphaDBConfig extends AbstractDBConfig {
 
     public AlphaDBConfig(ApplicationContext context) {
-        super(context, AlphaDB.prefix);
+        super(context, AlphaDB.prefix, AlphaDB.class);
     }
 
     @Bean(name = AlphaDB.prefix + "DataSourceProperties")
@@ -45,7 +45,7 @@ class AlphaDBConfig extends AbstractDBConfig {
 
         @Override
         public boolean matches(ConditionContext context, AnnotatedTypeMetadata metadata) {
-            return Utils.loadJPABeans(context.getBeanFactory(), AlphaDB.class);
+            return DBAnnotationUtil.loadJPABeans(context.getBeanFactory(), AlphaDB.class);
         }
     }
 

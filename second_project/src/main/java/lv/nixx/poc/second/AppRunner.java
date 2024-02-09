@@ -8,8 +8,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 
-@AlphaDB
-@BetaDB
+@AlphaDB(packageToScan = "lv.nixx.poc.second.orm.alpha")
+@BetaDB(packageToScan = "lv.nixx.poc.second.orm.beta")
 
 @LoggedUserController
 public class AppRunner {

@@ -14,7 +14,7 @@ import javax.sql.DataSource;
 class BetaDBConfig extends AbstractDBConfig {
 
     public BetaDBConfig(ApplicationContext context) {
-        super(context, BetaDB.prefix);
+        super(context, BetaDB.prefix, BetaDB.class);
     }
 
     @Bean(name = BetaDB.prefix + "DataSourceProperties")
@@ -45,7 +45,7 @@ class BetaDBConfig extends AbstractDBConfig {
     static class BetaDBCondition implements Condition {
         @Override
         public boolean matches(ConditionContext context, AnnotatedTypeMetadata metadata) {
-            return Utils.loadJPABeans(context.getBeanFactory(), BetaDB.class);
+            return DBAnnotationUtil.loadJPABeans(context.getBeanFactory(), BetaDB.class);
         }
     }
 

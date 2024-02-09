@@ -12,6 +12,7 @@ import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.PlatformTransactionManager;
 
 import javax.sql.DataSource;
+import java.lang.annotation.Annotation;
 import java.util.HashMap;
 
 abstract class AbstractDBConfig {
@@ -26,16 +27,17 @@ abstract class AbstractDBConfig {
 
     private final String driverClassName;
 
-    protected AbstractDBConfig(ApplicationContext applicationContext, String prefix) {
+    protected AbstractDBConfig(ApplicationContext applicationContext, String prefix, Class<? extends Annotation> annotationType) {
         Environment env = applicationContext.getEnvironment();
 
         this.prefix = prefix;
         this.applicationContext = applicationContext;
         this.initFileName = env.getProperty("db." + prefix + ".init-file");
-        this.packagesToScan = env.getProperty("db." + prefix + ".packages.to.scan", String[].class);
 
         this.ddlAuto = env.getProperty("hibernate.hbm2ddl.auto", "validate");
         this.driverClassName = env.getProperty("driver-class-name", "com.mysql.cj.jdbc.Driver");
+
+        this.packagesToScan = DBAnnotationUtil.getPackagesToScan(applicationContext, annotationType);
     }
 
     public DataSource createSource() {
@@ -53,6 +55,7 @@ abstract class AbstractDBConfig {
 
         LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
         em.setDataSource(dataSource);
+
         if (packagesToScan != null) {
             em.setPackagesToScan(packagesToScan);
         }
@@ -74,4 +77,6 @@ abstract class AbstractDBConfig {
         EntityManagerFactory f = applicationContext.getBean(prefix + "EntityManagerFactory", EntityManagerFactory.class);
         return new JpaTransactionManager(f);
     }
+
+
 }
