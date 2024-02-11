@@ -4,9 +4,9 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>lv.nixx.poc</groupId>
-    <artifactId>second-project</artifactId>
+    <artifactId>libs-commons</artifactId>
     <version>1.0.0</version>
-    <packaging>war</packaging>
+    <packaging>pom</packaging>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -24,7 +24,7 @@
 
         <dependency>
             <groupId>lv.nixx.poc</groupId>
-            <artifactId>commons-proj</artifactId>
+            <artifactId>config-commons</artifactId>
             <version>1.0.0</version>
         </dependency>
 
@@ -79,26 +79,6 @@
             <scope>test</scope>
         </dependency>
 
-
-
     </dependencies>
-
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-                <configuration>
-                    <excludes>
-                        <exclude>
-                            <groupId>org.projectlombok</groupId>
-                            <artifactId>lombok</artifactId>
-                        </exclude>
-                    </excludes>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
-
 
 </project>
