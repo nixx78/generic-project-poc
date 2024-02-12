@@ -1,4 +1,4 @@
-package lv.nixx.poc.common.security;
+package lv.nixx.poc.common.security.config;
 
 import org.springframework.context.annotation.Import;
 
@@ -11,4 +11,6 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 @Import({LoggedUserConfigImporter.class})
 public @interface LoggedUserController {
+
+    UserFields[] fields() default {UserFields.NAME};
 }
