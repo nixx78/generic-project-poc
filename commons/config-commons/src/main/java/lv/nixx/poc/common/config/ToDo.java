@@ -4,9 +4,9 @@ public class ToDo {
 
     // DB connection related tasks
     //TODO DB connection URL -> partially hardcode ?
+    //TODO Try to use context.registerBean approach to create DataSource/EntityManager/TransactionManager beans
 
-    //Common
-    //TODO Investigate possibility create beans on 'fly' = https://www.woolha.com/tutorials/spring-register-bean-programmatically-examples
-
+    //Config
+    //TODO Actuator configuration using annotation. Property configuration in java: management.endpoints etc
 
 }
