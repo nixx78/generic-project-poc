@@ -10,7 +10,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 
-@AlphaDB_V2()
+@AlphaDB_V2
 
 @WebSocketWithAMQ
 @AMQ
